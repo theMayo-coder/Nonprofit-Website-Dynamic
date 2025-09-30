@@ -1,0 +1,33 @@
+
+<%- include('partials/header_base2.ejs', {title: "Temple Events"}) %>
+
+    <div id="title-div">
+        <h1 id="title-text">Events</h1>
+    </div>
+
+    <div id="scroll">
+
+        <table id="events-table">
+            <tr>
+                <th class="events-header">
+                    Date
+                </th>
+                <th class="events-header">
+                    Description
+                </th>
+            </tr>>
+            <% events.forEach((event) => { 
+                const dayString = event.date.getDate().toString().padStart(2, '0');
+                const monthString = (event.date.getMonth() + 1).toString().padStart(2, '0');
+                %>
+                <tr class="events-row">
+                    <td style="font-size: 30px;"><%=monthString%>/<%=dayString%></td>
+                    <td style="font-size: 30px;"><%=event.description%></td>
+                </tr>
+            <% }) %>
+
+        </table>
+
+    </div>
+
+<%- include('partials/footer_base2.ejs') %>
