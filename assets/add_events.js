@@ -6,14 +6,13 @@ $(document).ready(function() {
 
         console.log("being clicked on");
 
-        var item = $(this).text().replace(/ /g, "-");
+        var item = encodeURIComponent($(this).text());
         console.log(item);
 
         $.ajax({
             type: 'DELETE',
             url: '/add-events/' + item,
             success: function(data) {
-                console.log(location);
                 window.location = "/add-events";
             }
         })

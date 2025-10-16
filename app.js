@@ -148,12 +148,12 @@ app.delete("/add-events/:description", urlencodedParser, async function(req, res
     
     console.log("called delete req");
     //get description
-    var deleting = req.params.description;
-    var spaced = deleting.replace(/-/g, " ");
+    const deleting = decodeURIComponent(req.params.description);
+    const spaced = deleting.replace(/-/g, " ");
 
     console.log(spaced);
 
-    await Event.find().deleteOne({description: spaced});
+    await Event.deleteOne({description: spaced});
     res.send("success");
 
 });
